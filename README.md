@@ -4,11 +4,11 @@
 В цьому датасеті багато даних, які навмисно були згенеровані з великою кількістю помилок для того, щоб попрактикуватись в очищенні даних
 ## 2. Імпорт необхідних бібліотек та датасету
 
-![image](https://github.com/user-attachments/assets/17c255ff-9d69-43d3-990f-be142ddb5f63)
+![image](https://github.com/user-attachments/assets/e6c25343-6edf-4c31-956d-d7565ec172e5)
 
 Після імпорту всього необхідного бачимо таблицю
 
-![image](https://github.com/user-attachments/assets/66c13722-dab3-4144-b1dc-ae77b35029dc)
+![image](https://github.com/user-attachments/assets/12b6fad6-e6c4-4c07-8563-c7f3b5b8e3d9)
 
 Також одразу можна переглянути коротку інформацію про цю таблицю
 
@@ -19,7 +19,7 @@
 ### 1) Видалення дублікатів
 Видаляємо усі ідентичні рядки
 
-![image](https://github.com/user-attachments/assets/46361542-d6d4-4418-a62b-179380b88a08)
+![image](https://github.com/user-attachments/assets/457dd32d-ef69-44cc-bfb7-902345025dbf)
 
 Після видалення дублікатів бачимо, що кількість записів зменшилась на 500 
 
@@ -33,3 +33,11 @@
 ![image](https://github.com/user-attachments/assets/69a08dec-aac6-48f6-a85e-dfe8f66e88b5)
 
 Всього є 9500 замовлень, а унікальних OrderID лише 6123, що порушує умову унікальності. Тому необхідно створити новий стовпець OrderID, де всі значення будуть унікальними
+
+![image](https://github.com/user-attachments/assets/798996b1-d53a-46f8-818a-c24e08a1b4cc)
+
+Було створено додатковий DataFrame df2 для того щоб випадково не втратити наявні дані. Після чого у ньому ж створено стовпець NewOrderID, який заповнюється унікальними значеннями починаючи від 100000
+
+![image](https://github.com/user-attachments/assets/4fff20bd-2e97-459d-9126-6c9c428c5491)
+
+Замінюємо значення OrderID на значення із стовпця NewOrderID, після чого видаляємо останній. При перевірці на унікальність бачимо, що всі ідентифікатори унікальні
