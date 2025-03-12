@@ -41,3 +41,14 @@
 ![image](https://github.com/user-attachments/assets/4fff20bd-2e97-459d-9126-6c9c428c5491)
 
 Замінюємо значення OrderID на значення із стовпця NewOrderID, після чого видаляємо останній. При перевірці на унікальність бачимо, що всі ідентифікатори унікальні
+
+### 3) Приведення даних до правильних типів
+
+![image](https://github.com/user-attachments/assets/34bbd4d0-dd98-449d-bb83-0880d372b701)
+
+Помітно, що багато стовпців містять дані типу object та float, але для багатьох стовпців ці типи даних не підходять, тому замінимо їх підходящими.
+
+#### а) Datetime
+
+![image](https://github.com/user-attachments/assets/afce5b7a-a8b3-4d23-8fe7-688b0a7b75ad)
+
