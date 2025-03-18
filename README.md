@@ -50,5 +50,62 @@
 
 #### а) Datetime
 
+Перетворимо дані, що пов'язані із часом у формат Datetime
+
 ![image](https://github.com/user-attachments/assets/afce5b7a-a8b3-4d23-8fe7-688b0a7b75ad)
+
+#### б) Category
+
+Переглянемо унікальні даних у тих стовпцях, де їх мало б бути мало. 
+
+![image](https://github.com/user-attachments/assets/cd704c61-1b09-4419-a306-ca95f5efacca)
+![image](https://github.com/user-attachments/assets/0f939d92-9b89-4833-98ea-2fd231cc7ada)
+
+Ці стовпці варто віднести до типу Category, тому що цей тип підходить для даних, де мало унікальних значень.
+
+![image](https://github.com/user-attachments/assets/1c60da27-7fd9-44a3-9fdd-6b507a89a382)
+
+#### в) Integer
+
+Перетворимо дані що представляють цілі числа у тип Int64
+
+![image](https://github.com/user-attachments/assets/420d6f3f-56b8-4384-8c41-58d6c7483685)
+
+#### г) String
+
+Для поштового індексу краще мати рядковий тип, оскільки поштовий індекс може містити нулі на початку
+
+![image](https://github.com/user-attachments/assets/978dc71f-30c5-4cee-ba05-3451f3125e66)
+
+
+#### Правильні типи
+
+Тепер усі дані приведені до правильних типів
+
+![image](https://github.com/user-attachments/assets/79330b74-74b5-4d52-b688-4df89c3fddae)
+
+Можна помітити, що є int64 та Int64 типи даних. Різниця між ними полягає у тому, що Int64 допускає відсутність даних, а int64 ні. Це важливо у нашому випадку, тому що primary key не може мати порожніх значень.
+
+### 4) Налаштування правильної локації
+
+Подивимось на стовпці, що відповідають за локацію
+
+![image](https://github.com/user-attachments/assets/1e552d95-987d-42f6-bce1-4f293c842bab)
+
+Як бачимо, значення не співпадають між собою, тому потрібно змінити їх так, щоб усе було правильно
+
+#### а) Заповнення порожніх значень
+Спершу додамо до City категорію Unknown
+
+![image](https://github.com/user-attachments/assets/570d545b-038d-4c12-8ca5-791b35be5bec)
+
+Тепер заповнимо усі порожні значення
+
+![image](https://github.com/user-attachments/assets/c9fc1ec1-49e3-4eda-a26a-384131807309)
+
+![image](https://github.com/user-attachments/assets/2f7369a0-7add-44c2-9db3-29e090970a99)
+
+#### б) Перевірка відповідності
+
+Для того щоб усі значення локацій відповідали одне одному потрібно визначити словники відношень
 
