@@ -120,6 +120,8 @@
 ![image](https://github.com/user-attachments/assets/9a25c939-fa52-4467-b91c-6db23486aa5b)
 
 Виправлені дані запишемо уже в новий датафрейм df3. 
+
+#### Правильні дані локації
 Тепер порівняємо
 
 ![image](https://github.com/user-attachments/assets/2784a727-8a17-4cbe-a663-c16b4250fe7d)
