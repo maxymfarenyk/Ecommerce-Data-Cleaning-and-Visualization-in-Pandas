@@ -323,3 +323,8 @@
 ![image](https://github.com/user-attachments/assets/1f7f2f18-153d-4b5e-928f-6b25a58d2c55)
 
 ## 4. Аналіз даних
+
+Після очищення даних збережемо цей датафрейм у csv файл
+
+![image](https://github.com/user-attachments/assets/a2b1a71c-ec74-4975-b6dc-001002d1515a)
+
