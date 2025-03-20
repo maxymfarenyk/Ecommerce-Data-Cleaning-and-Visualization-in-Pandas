@@ -352,7 +352,7 @@
 
 Поглянемо власне на графіки.
 
-![image](https://github.com/user-attachments/assets/be66d760-e78f-4f49-ac11-7fd81f06f049)
+<img src="https://github.com/user-attachments/assets/7b62fc07-0219-43cb-b924-321e0728ac75" width="700">
 
 З графіку продажів видно, що розподіл майже рівномірний, за винятком значень менших нуля та близьких до нього. Ці значення є поверненнями товарів, тому недивно що їх менше.
 
@@ -364,6 +364,7 @@
 
 ![image](https://github.com/user-attachments/assets/a220378b-4b46-48ad-b735-ac8c70290ce1)
 
-![image](https://github.com/user-attachments/assets/c5c656c9-b85a-4405-9b3f-0c6b91877702)
+<img src="https://github.com/user-attachments/assets/c5c656c9-b85a-4405-9b3f-0c6b91877702" width="500">
 
+**Висновок:**
 На цьому графіку видно, що кореляція між усіма значеннями відсутня, що свідчить про те, що ці дані не є справжніми, а штучно створеними і аналізувати їх немає сенсу.
