@@ -85,7 +85,7 @@
 
 Можна помітити, що є int64 та Int64 типи даних. Різниця між ними полягає у тому, що Int64 допускає відсутність даних, а int64 ні. Це важливо у нашому випадку, тому що primary key не може мати порожніх значень.
 
-### 4) Налаштування коректності локації
+### 4) Локація
 
 Подивимось на стовпці, що відповідають за локацію
 
@@ -130,7 +130,7 @@
 
 Як бачимо, тепер інформація про локацію відображається коректно.
 
-### 5) Налаштування коректності товарів
+### 5) Товари
 
 ![image](https://github.com/user-attachments/assets/15216c48-4b5d-4f08-bbaa-292ebe92e47f)
 
@@ -196,3 +196,130 @@
 
 ![image](https://github.com/user-attachments/assets/e38c371e-4dfd-4cc4-8bca-db4c65f241f8)
 
+### 6) Дати замовлення та доставки
+
+Перевіримо дати замовлення та доставки. Доставка не може відбутись перед замовленням, тому подивимось чи є записи де дата доставки менша за замовлення
+
+![image](https://github.com/user-attachments/assets/9519fbca-389f-4f42-ba61-ec41927a5e8c)
+
+Бачимо, що багато помилкових даних. Щоб це виправити змінимо дату замовлення, щоб вона дорівнювала даті доставки.
+
+![image](https://github.com/user-attachments/assets/1b015348-3338-4b49-a62c-9b07b1c0ce2d)
+
+### 7) Персональні дані клієнтів
+
+Подивимось на персональні дані клієнтів.
+
+![image](https://github.com/user-attachments/assets/22df693a-7191-407d-858d-3b0f3c2fb5d0)
+
+По-перше, бачимо що є порожні дані. По-друге, є імена що повторюються, але в них різні айді та сегменти.
+
+#### а) Перевірка імен
+Поглянемо для прикладу дані клієнта з іменем David White.
+
+![image](https://github.com/user-attachments/assets/7fca83a7-b121-4a62-bc3d-e6a099bf0628)
+
+Бачимо що дуже багато неспівпадінь, як із сегментом, так і з айді. Тому стовпець імені не є інформативним і його варто видалити.
+
+![image](https://github.com/user-attachments/assets/25eabfad-992a-4a96-89a9-5f2aa9b30f61)
+
+#### б) Заповнення порожніх значень
+
+Спершу подивимось скільки порожніх значень серед айді.
+
+![image](https://github.com/user-attachments/assets/eb7defa7-6b07-4bd1-a4e6-b89b039600a5)
+
+Заповнимо їх наступними значеннями після максимального.
+
+![image](https://github.com/user-attachments/assets/024f1def-c7da-4f21-abc7-344c039c8c18)
+
+Тепер перейдемо до Segment.
+
+![image](https://github.com/user-attachments/assets/c2a4820a-58bd-480f-bf3e-3d92e8bdf6a5)
+
+Подивимось унікальні значення.
+
+![image](https://github.com/user-attachments/assets/e054d4e4-487b-4e36-a7b5-e460ce5b1d31)
+
+Замінимо пропуски значенням Undefined.
+
+![image](https://github.com/user-attachments/assets/16054a54-d6ba-4270-a874-3535a60d9d39)
+
+### 8) Числові дані та оплата
+
+Подивимось на деякі значення із цих стовпців.
+
+![image](https://github.com/user-attachments/assets/7146cab2-6fa3-42b0-a3e4-7d8578b3d690)
+
+#### а) Sales і Quantity
+Спершу подивимось чи є у стовпці Sales значення менші 0.
+
+![image](https://github.com/user-attachments/assets/43a079f5-0151-4dcb-a787-393513b6594e)
+
+Можливо від'ємні значення означають повернення товару, але для цього від'ємною має бути й кількість.
+Подивимось скільки є рядків де від'ємні значення у двох колонках.
+
+![image](https://github.com/user-attachments/assets/30ed243c-95cd-43fc-8787-f725321d6c7e)
+
+Отже ці дані означають повернення, а всі інші (де лише значення одного з двох стовпців від'ємне) можна видалити.
+
+![image](https://github.com/user-attachments/assets/00518716-150a-4f49-81f5-24cfd46d3192)
+
+Також перевіримо чи є пропущені дані.
+
+![image](https://github.com/user-attachments/assets/25acd9de-a953-40b3-afda-019482bc048e)
+
+Отже, серед цих стовпців пропущених даних немає.
+
+#### б) Discount
+Подивимось які є унікальні значення. Знижка у відсотках може бути в діапазоні від 0 до 100.
+
+![image](https://github.com/user-attachments/assets/2ffc4f83-2e68-47b9-aa84-45acd2939bc6)
+
+Отже, тут є значення 110 і -10, які швидше за все значать просто 10%, але було допущено помилку при записі.
+Замінимо ці дані на 10.
+
+![image](https://github.com/user-attachments/assets/bcccde40-636a-443a-9376-25d675517dc1)
+
+І заповнимо NA нулями.
+
+![image](https://github.com/user-attachments/assets/7a49167f-a144-45d2-94db-cf53e5da259e)
+![image](https://github.com/user-attachments/assets/bd37b546-f5cc-404d-abe9-54acc40aed1a)
+
+#### в) Profit і ShippingCost
+Також подивимось на унікальні значення.
+
+![image](https://github.com/user-attachments/assets/5ebab924-0f3b-4661-b574-b5628403fd2d)
+
+Також заповнимо Na нулями.
+
+![image](https://github.com/user-attachments/assets/989f382d-c7ec-4e9e-8fa8-e7ee2d2d885b)
+![image](https://github.com/user-attachments/assets/0021fb98-bf19-4a1a-9555-0919370bc265)
+
+З ShippingCost робимо те саме
+
+![image](https://github.com/user-attachments/assets/271a22fb-f039-44bc-b5ab-fbdcf672c02b)
+![image](https://github.com/user-attachments/assets/c8ff1ca2-4109-4444-8593-e4ee272c2420)
+
+#### г) CustomerRating
+Подивимось які є рейтинги у покупців.
+![image](https://github.com/user-attachments/assets/8a4aa19f-2e10-490f-ab02-4c3180fb00ef)
+
+Важко визначити які межі цього оцінювання, тому що найбільшим значенням є 100, а найменшим -1. 
+Щоб перевірити чи це одиничні помилки переглянемо скільки є рядків з різними рейтингами.
+
+![image](https://github.com/user-attachments/assets/51d4f09a-e9d3-4ff9-8ac9-cc8a5b84ff4b)
+
+Бачимо, що це не одиничні помилки, тому нам не зрозуміло яка тут шкала оцінювання і тому цей стовпець не є інформативним і його можна видалити.
+
+![image](https://github.com/user-attachments/assets/4627b0b9-dc4c-4e49-890f-83434503e515)
+
+#### ґ) PaymentMethod
+
+![image](https://github.com/user-attachments/assets/ef6eb1f6-77c3-4675-948f-31aa3429efd6)
+
+Заповнюємо Na значенням Undefined.
+
+![image](https://github.com/user-attachments/assets/1f7f2f18-153d-4b5e-928f-6b25a58d2c55)
+
+## 4. Аналіз даних
